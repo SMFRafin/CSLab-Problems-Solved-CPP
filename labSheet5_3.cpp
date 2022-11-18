@@ -1,37 +1,36 @@
 #include <iostream>
 using namespace std;
 
-//Lenght of a string using pointer of an prime object
+//Lenght of a string using pointer of an object
+//Using class and copy constructor
 
-class Length
+class String
 {
     public:
     char str[100];
-    int length;
-    Length()
+    String()
     {
-        length=0;
+        str[100]='\0';
     }
     void getString()
     {
         cout<<"Enter a string: ";
         cin>>str;
     }
-    void count()
+    void length()
     {
+        int count=0;
         for(size_t i =0; str[i]!='\0';i++)
         {
-            length++;
+            count++;
         }
-        cout<<"\nLength of string is "<<length;
-       
+        cout<<"\nLength of string is "<<count<<"\n";
     }
-    
-    Length(const Length &X)
+    String(const String &X)
     {
-        length=X.length;
+        str[100]=X.str[100];
     }
-    ~Length()
+    ~String()
     {
         cout<<"\nDestructor called";
     }
@@ -39,13 +38,14 @@ class Length
 
 int main()
 {
-    Length X;
-    Length *ptr;
+    String X;
+    String *ptr;
     ptr=&X;
     ptr->getString();
-    ptr->count();
-    Length Y(*ptr);
-    Y.count();
+    ptr->length();
+    String Y(*ptr);
+    Y.getString();
+    Y.length();
     return 0;
-    
+
 }
