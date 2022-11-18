@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string.h>
 using namespace std;
 
 //Frequency of a character in a string using pointer of an object
@@ -34,7 +35,7 @@ class String
     }
     String(const String &X)
     {
-        str[100]=X.str[100];
+        strcpy(str,X.str);
     }
     ~String()
     {
@@ -50,7 +51,6 @@ int main()
     ptr->getString();
     ptr->frequency();
     String Y(*ptr);
-    Y.getString();
     Y.frequency();
     return 0;
 
