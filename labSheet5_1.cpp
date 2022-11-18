@@ -1,42 +1,42 @@
 #include <iostream>
 using namespace std;
 
+//Frequency of a character in a string using pointer of an object
+//Using class and copy constructor
 
-class Frequency
+class String
 {
     public:
     char str[100];
-    char c;
-    Frequency()
+    String()
     {
-        c='\0';
+        str[100]='\0';
     }
     void getString()
     {
         cout<<"Enter a string: ";
         cin>>str;
     }
-    void count()
+    void frequency()
     {
         int count=0;
+        char ch;
+        cout<<"\nEnter a character to find its frequency: ";
+        cin>>ch;
         for(size_t i =0; str[i]!='\0';i++)
         {
-            if (str[i]==c)
+            if(str[i]==ch)
             {
                 count++;
             }
-            
         }
-        cout<<"\nFrequency of "<<c<<" is "<<count;
-       
+        cout<<"\nFrequency of "<<ch<<" is "<<count<<"\n";
     }
-    
-    Frequency(const Frequency &X)
+    String(const String &X)
     {
         str[100]=X.str[100];
-        c=X.c;
     }
-    ~Frequency()
+    ~String()
     {
         cout<<"\nDestructor called";
     }
@@ -44,15 +44,14 @@ class Frequency
 
 int main()
 {
-    Frequency X;
-    Frequency *ptr;
+    String X;
+    String *ptr;
     ptr=&X;
     ptr->getString();
-    cout<<"Enter a character: ";
-    cin>>ptr->c;
-    ptr->count();
-    Frequency Y(*ptr);
-    Y.count();
+    ptr->frequency();
+    String Y(*ptr);
+    Y.getString();
+    Y.frequency();
     return 0;
 
 }
